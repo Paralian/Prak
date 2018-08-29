@@ -8,7 +8,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GenomeDownloader {
     
@@ -61,8 +63,8 @@ public class GenomeDownloader {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
             System.out.println(inputLine);
-            list.add(inputLine);
-            collections.sort(sequenceIds);
+            parseGenomeId(inputLine);
+            sequenceIds.add(inputLine);
         }
         in.close();
         return sequenceIds;
@@ -75,18 +77,29 @@ public class GenomeDownloader {
      * @return A map with actual sequence ("seq") and the meta information ("info")
      * @throws IOException
      */
-    public String getSequence(String id) throws IOException {
+    public Map<String, String> getSequence(String id) throws IOException {
         URL obj = new URL("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=38638184&rettype=fasta&retmode=text");
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         InputStreamReader urlStream = new InputStreamReader(obj.openStream());
         BufferedReader in = new BufferedReader(urlStream);
         String inputLine;
-        String res = "";
+        String seq = "";
+        String info = "";
+        Map<String, String> seqMap = new HashMap();
         while ((inputLine = in.readLine()) != null) {
             System.out.println(inputLine);
-            // TODO
+            if (inputLine.contains("\\>")) {
+                info = inputLine;
+                seqMap.put("info", info);
+            }
+            else {
+                inputLine.replaceAll("[^ACGT]", "");
+                seq.concat(inputLine);
+            }
         }
+        seqMap.put("seq", seq);
         in.close();
-        return res;
+        return seqMap;
+        
     }
 }
