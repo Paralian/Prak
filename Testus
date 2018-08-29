@@ -1,0 +1,23 @@
+    public String getAminoAcid(String triplet) {
+        // create our map
+        Map<String, List<String>> Acid  = new HashMap<>();
+
+        // populate it
+        List<Arginine> Arginine = new ArrayList<Arginine>();
+        Arginine.add(new Arginine("AGA"));
+        Arginine.add(new Arginine("AGG"));
+        Acid.put("R", Arginine);
+        List<Serine> Serine = new ArrayList<Serine>;
+        Serine.add(new Serine("AGC"))
+        Serine.add(new Serine("AGT"))
+        Acid.put("S", Serine)        
+                
+        // read from it
+        List<Arginine> R = Acid["R"];
+        Arginine R1 = R1[0];
+        Arginine R2 = R2[1];
+        List<Serine> S = Acid["S"];
+        Serine S1 = S1[0];
+        Serine S2 = S2[1];
+        return "";
+    }
