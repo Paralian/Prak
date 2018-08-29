@@ -17,21 +17,23 @@ import static java.lang.Math.*;
 
 
 public class BioBasicsParser {
-
+    
     private List<String> content;
     private List<String> wikiContent;
-
+    
     /**
      * Load the whole file into memory.
+     *
      * @param file A path object to the actual file.
      * @throws IOException
      */
     public void loadEntireFile(Path file) throws IOException {
         this.content = Files.readAllLines(file, StandardCharsets.UTF_8);
     }
-
+    
     /**
      * Read a file line by line. Recommended way for large files.
+     *
      * @param file A path object to the actual file
      * @throws IOException
      */
@@ -44,9 +46,10 @@ public class BioBasicsParser {
         }
         this.content = StringList;
     }
-
+    
     /**
      * Retrieves an entire page and saves it in a string.
+     *
      * @param url An URL object to the web page.
      * @throws IOException
      */
@@ -65,18 +68,19 @@ public class BioBasicsParser {
         in.close();
         this.wikiContent = outputLine;
     }
-
+    
     /**
      * Accepts a keyword and returns this words subsequent content.
+     *
      * @param keyword The word to look for.
-     * @param length The length of the subsequent content
+     * @param length  The length of the subsequent content
      * @param useFile Use a file as source or a web page. If false, web page needs to be present.
      * @return Returns the specified keywords subsequent content.
      */
     public List<String> getInfoFor(String keyword, int length, boolean useFile) {
         List<String> source =
                 useFile ? this.content : this.wikiContent;
-        String tmpContent = source.stream().reduce("",String::concat);
+        String tmpContent = source.stream().reduce("", String::concat);
         List<String> hits = new ArrayList<>();
         int startIdx = tmpContent.indexOf(keyword);
         while (startIdx < tmpContent.length() && startIdx != -1) {
@@ -84,15 +88,15 @@ public class BioBasicsParser {
                 int endIdx = Math.min((startIdx + length), (tmpContent.length()));
                 hits.add(tmpContent.substring(startIdx, endIdx));
                 startIdx = tmpContent.indexOf(keyword, endIdx);
-            }
-            else return hits;
+            } else return hits;
         }
         
         return hits;
     }
-
+    
     /**
      * Takes a string and replaces all HTML tags.
+     *
      * @param tag AN HTML tag, such as '&#60;button&#62;Klick mich!&#60;/button&#62;'.
      * @return The purified string.
      */
@@ -101,6 +105,6 @@ public class BioBasicsParser {
         text = text.replaceAll("\\<.*?\\>", "");
         return text;
     }
-
-
+    
+    
 }
