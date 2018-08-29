@@ -11,7 +11,7 @@
             Serine.add(new Serine("AGC"));
             Serine.add(new Serine("AGT"));
             Acid.put("S", Serine);
-        List<Theronine> Threonine = new ArrayList<Threonine>
+        List<Threonine> Threonine = new ArrayList<Threonine>
             Threonine.add(new Threonine("ACA"));
             Threonine.add(new Threonine("ACG"));
             Threonine.add(new Threonine("ACC"));
