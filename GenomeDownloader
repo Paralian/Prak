@@ -61,7 +61,8 @@ public class GenomeDownloader {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
             System.out.println(inputLine);
-            // TODO
+            list.add(inputLine);
+            collections.sort(sequenceIds);
         }
         in.close();
         return sequenceIds;
