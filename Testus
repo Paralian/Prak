@@ -10,7 +10,19 @@
         List<Serine> Serine = new ArrayList<Serine>;
         Serine.add(new Serine("AGC"))
         Serine.add(new Serine("AGT"))
-        Acid.put("S", Serine)        
+        Acid.put("S", Serine)
+        List<Isoleucine> Isoleucine = new ArrayList<Isoleucine>();
+        Isoleucine.add(new Isoleucine("ATT"));
+        Isoleucine.add(new Isoleucine("ATC"));
+        Isoleucine.add(new Isoleucine("ATA"));
+        Acid.put("I", Isoleucine);
+        List<Methionine> Methionine = new ArrayList<Methionine>();
+        Methionine.add(new Methionine("ATG"));
+        Acid.put("M", Methionine);
+        List<Histidine> Histidine = new ArrayList<Histidine>();
+        Histidine.add(new Histidine("CAT"));
+        Histidine.add(new Histidine("CAC"));
+        Acid.put("H", Histidine);
                 
         // read from it
         List<Arginine> R = Acid["R"];
