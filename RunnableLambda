@@ -3,7 +3,7 @@ import java.util.List;
 import java.lang.Thread;
 
 
-public class RunableLambda {
+public class RunnableLambda {
     public static String something(int threads, int N) throws InterruptedException {
         List<Thread> k = new ArrayList<>();
         for (int l = 0; l < threads; l++) {
