@@ -1,15 +1,21 @@
-    public static int test2(){
-        for(int i=0; i<=100; i++)
-        {
-            List<Integer> Random1K = new ArrayList<Integer>();
-            Random1K.add(Random());
-            Iterator<Integer> ListIterator = Random1K.iterator();
-            while (ListIterator.hasNext()) {
-                Integer Random = ListIterator.next();
-                System.out.print("\r");
-                System.out.print(Random);
-                //Thread.sleep(2000);
+    public static int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    public static int test2() {
+        for (int i = 0; i <= 100; i++) {
+            int abc = randomWithRange(1, 1000);
+            if (abc % 5 == 0) {
+                //delete
+            }
+            else {
+                List<Integer> Ausgabe = new ArrayList<Integer>();
+                Ausgabe.add(abc);
+                Collection.sort(Ausgabe);
+                System.out.println(Ausgabe);
             }
         }
     return 0;
     }
+}
