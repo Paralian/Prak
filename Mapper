@@ -1,0 +1,4 @@
+@FunctionalInterface
+public interface Mapper<I, O> {
+    O exec(I k);
+}
