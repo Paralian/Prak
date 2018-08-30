@@ -12,10 +12,9 @@
             else {
                 List<Integer> Ausgabe = new ArrayList<Integer>();
                 Ausgabe.add(abc);
-                Collection.sort(Ausgabe);
+                Collections.sort(Ausgabe);
                 System.out.println(Ausgabe);
             }
         }
     return 0;
     }
-
