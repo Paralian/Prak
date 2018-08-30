@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterTools  {
+    public static <I, O> List<O> mapAllToList(Iterable<I> iterable, Mapper<I, O> mapper) {
+        List<O> Output = new ArrayList<>();
+        for (I i:iterable){
+            Output.add(mapper.exec(i));
+        }
+        return Output;
+    }
+}
