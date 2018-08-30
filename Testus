@@ -1,48 +1,15 @@
-    public String getAminoAcid(String triplet) {
-        // create our map
-        Map<String, List<String>> Acid  = new HashMap<>();
-
-        // populate it
-        List<Arginine> Arginine = new ArrayList<Arginine>();
-            Arginine.add(new Arginine("AGA"));
-            Arginine.add(new Arginine("AGG"));
-            Acid.put("R", Arginine);
-        List<Serine> Serine = new ArrayList<Serine>;
-            Serine.add(new Serine("AGC"));
-            Serine.add(new Serine("AGT"));
-            Acid.put("S", Serine);
-        List<Threonine> Threonine = new ArrayList<Threonine>
-            Threonine.add(new Threonine("ACA"));
-            Threonine.add(new Threonine("ACG"));
-            Threonine.add(new Threonine("ACC"));
-            Threonine.add(new Threonine("ACT"));
-            Acid.Put("T",Threonine);
-        List<Lysine> Lysine = new ArrayList<Lysine>
-            Lysine.add(new Lysine("AAG"));
-            Lysine.add(new Lysine("AAA"));
-            Acid.put("K", Lysine);
-        List<Asparagine> Asparagine = new ArrayList<Asparagine>
-            Asparagine.add(new Asparagine("AAC"));
-            Asparagine.add(new Asparagine("AAT"));
-            Acid.put("N"), Asparagine);
-        // read from it
-
-        List<Arginine> R = Acid["R"];
-        Arginine R1 = R1[0];
-        Arginine R2 = R2[1];
-        List<Serine> S = Acid["S"];
-        Serine S1 = S1[0];
-        Serine S2 = S2[1];
-        List<Threonine> T = Acid["T"];
-        Threonine T1 = T1 [0];
-        Threonine T2 = T2 [1];
-        Threonine T3 = T3 [2];
-        Threonine T4 = T4 [3];
-        List<Lysine> K = Acid ["K"];
-        Lysine K1 = K1 [0];
-        Lysine K2 = K2 [1];
-        List<Asparagine> N = Acid["N"];
-        Asparagine N1 = N1 [0];
-        Asparagine N2 = N2 [1];
-        return "";
+    public static int test2(){
+        for(int i=0; i<=100; i++)
+        {
+            List<Integer> Random1K = new ArrayList<Integer>();
+            Random1K.add(Random());
+            Iterator<Integer> ListIterator = Random1K.iterator();
+            while (ListIterator.hasNext()) {
+                Integer Random = ListIterator.next();
+                System.out.print("\r");
+                System.out.print(Random);
+                //Thread.sleep(2000);
+            }
+        }
+    return 0;
     }
