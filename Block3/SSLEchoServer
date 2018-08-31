@@ -1,0 +1,15 @@
+package echo;
+
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+public class SSLEchoClient {
+
+    SSLSocketFactory factory =
+            (SSLSocketFactory)SSLSocketFactory.getDefault();
+    SSLSocket socket = (SSLSocket) factory.createSocket(url, port);
+    socket.startHandshake()
+    java -Djavax.net.ssl.keyStore=localhost.server.keyStore -Djavax.net.ssl.keyStorePassword=keystorePassword Server
+}
+//java -Djavax.net.ssl.keyStore=keyStoreFile -Djavax.net.ssl.keyStorePassword=keystorePassword Server
