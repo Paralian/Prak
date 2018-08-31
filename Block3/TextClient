@@ -1,0 +1,47 @@
+// Client.java
+package echo;
+import java.net.*;
+import java.io.*;
+
+class TextClient {
+    public static void main(String[] args) {
+        try {
+            test123(" ", 1111);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static String test2 (String url, int port) throws IOException {
+        test123(url,port);
+        return null;
+    }
+
+    static void test123(String url, int port) throws IOException{
+        Socket socket = new Socket("127.0.0.1", 1025); // verbindet sich mit Server
+        System.out.println("Client start");
+        String zuSendendeNachricht = "Hello, world!";
+        schreibeNachricht(socket, zuSendendeNachricht);
+        String empfangeneNachricht = leseNachricht(socket);
+        System.out.println("server: " + empfangeneNachricht);
+    }
+
+    static void schreibeNachricht(Socket socket, String nachricht) throws IOException {
+        PrintWriter printWriter =
+                new PrintWriter(
+                        new OutputStreamWriter(
+                                socket.getOutputStream()));
+        printWriter.print(nachricht);
+        printWriter.flush();
+    }
+
+    static String leseNachricht(Socket socket) throws IOException {
+        BufferedReader bufferedReader =
+                new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+        char[] buffer = new char[200];
+        int anzahlZeichen = bufferedReader.read(buffer, 0, 200); // blockiert bis Nachricht empfangen
+        String nachricht = new String(buffer, 0, anzahlZeichen);
+        return nachricht;
+    }
+}
