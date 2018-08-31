@@ -1,0 +1,10 @@
+package echo;
+
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+
+public class SSLEchoServer {
+    SSLSocketFactory factory =
+            (SSLSocketFactory) SSLSocketFactory.getDefault();
+    SSLSocket socket = (SSLSocket) factory.createSocket(hostaddress, port);
+}
