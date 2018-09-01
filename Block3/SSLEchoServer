@@ -1,15 +1,19 @@
 package echo;
-
-
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
+import java.io.IOException;
+import java.net.Socket;
+import java.rmi.UnknownHostException;
 
-public class SSLEchoClient {
-
+public class SSLEchoServer {
+    public static Socket SSLHandshakeServer(/*final Socket socket,*/ final String host, final int port) throws IOException, UnknownHostException{
+    //run echo server
+    System.setProperty("javax.net.ssl.keyStore","C:\\Users\\Marvin\\Desktop\\Uni\\Prak\\Block3\\block_03_students\\localhost-server.keystore");
+    System.setProperty("javax.net.ssl.keyStorePassword","isthisreallifeKappa123");
     SSLSocketFactory factory =
-            (SSLSocketFactory)SSLSocketFactory.getDefault();
-    SSLSocket socket = (SSLSocket) factory.createSocket(url, port);
-    socket.startHandshake()
-    java -Djavax.net.ssl.keyStore=localhost.server.keyStore -Djavax.net.ssl.keyStorePassword=keystorePassword Server
+            (SSLSocketFactory) SSLSocketFactory.getDefault();
+    SSLSocket socket = (SSLSocket) factory.createSocket(host, port);
+    socket.startHandshake();
+    System.out.println("Handshake finished");
+    return null;}
 }
-//java -Djavax.net.ssl.keyStore=keyStoreFile -Djavax.net.ssl.keyStorePassword=keystorePassword Server
