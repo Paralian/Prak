@@ -1,0 +1,18 @@
+package echo;
+
+import java.io.IOException;
+
+public class SSLMain {
+    public static void main(String[] args) {
+        try {
+            SSLEchoServer.SSLHandshakeServer("127.0.0.1",1025);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            SSLEchoClient.SSLHandshakeClient("127.0.0.1",1025);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
