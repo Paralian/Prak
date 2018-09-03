@@ -1,0 +1,8 @@
+package thinirc.crypto;
+
+public interface Encoder {
+    
+    String encode(String raw);
+    
+    String decode(String encoded);
+}
