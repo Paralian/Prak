@@ -24,6 +24,14 @@ class TextClient {
         String empfangeneNachricht = leseNachricht(socket);
         System.out.println("server: " + empfangeneNachricht);
     }
+    static void test123(Socket socket3) throws IOException{
+        Socket socket = socket3; // verbindet sich mit Server
+        System.out.println("Client start");
+        String zuSendendeNachricht = "Hello, world!";
+        schreibeNachricht(socket, zuSendendeNachricht);
+        String empfangeneNachricht = leseNachricht(socket);
+        System.out.println("server: " + empfangeneNachricht);
+    }
 
     static void schreibeNachricht(Socket socket, String nachricht) throws IOException {
         PrintWriter printWriter =
