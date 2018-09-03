@@ -1,0 +1,9 @@
+package crypto;
+
+public class TestEncoder {
+    public static void main(String[] args) {
+       XorKeyEncoder name = new XorKeyEncoder();
+        System.out.println(name.encode("Hallo"));
+        System.out.println(name.decode(name.encode("Hallo")));
+    }
+}
