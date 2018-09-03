@@ -1,0 +1,32 @@
+package thinirc.client;
+
+import java.io.*;
+import java.net.Socket;
+
+public class SimpleClient {
+    public static void main(String[] args) {
+        try {
+            Socket socket3 = new Socket("dbsvm.mathematik.uni-marburg.de", 7778);
+            System.out.println("Connected");
+            String line = "";
+            BufferedWriter in = new BufferedWriter(new OutputStreamWriter(socket3.getOutputStream()));
+            BufferedReader out = new BufferedReader(new InputStreamReader(socket3.getInputStream()));
+            in.write("PASS propra2018\r\n");
+            in.write("User QIS 8 * : irgendwas\r\n");
+            in.write("Nick ein40\r\n");
+            in.write("JOIN #KursPingPong\r\n");
+            in.flush();
+            while ((line=out.readLine()) !=null){
+                System.out.println(line);
+                if(line.startsWith("PING :")){
+                   String payload = line.substring(6);
+                   in.write("PONG :" + payload + "\r\n");
+                    in.write("PRIVMSG #KursPingPong :PONG : "+"payloadoderauchnicht"+"\r\n");
+                    in.flush();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
