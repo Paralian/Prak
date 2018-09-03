@@ -1,0 +1,19 @@
+package crypto;
+
+public class XorKeyEncoder implements Encoder {
+    String inputkey = "dasistaberechtkrass";
+    byte[] key = inputkey.getBytes();
+
+    @Override
+    public String encode(String raw) {
+        char[] key = {'L', 'U', 'L'};
+        StringBuilder output = new StringBuilder();
+        for(int i = 0; i < raw.length(); i++) {
+            output.append((char) (raw.charAt(i) ^ key[i % key.length]));
+        }
+        return output.toString();
+    }
+    @Override
+    public String decode(String LUL){
+    return encode(LUL);}
+}
