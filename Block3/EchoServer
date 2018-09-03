@@ -8,15 +8,15 @@ import java.io.*;
 
     public static String test3 (String[] args) {
         try {
-            test321();
+            test321(1025);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    static void test321() throws IOException {
-        int port = 1025;
+    static void test321(int port2) throws IOException {
+        int port = port2;
         ServerSocket serverSocket = new ServerSocket(port);
         System.out.println("Server start");
         Socket client = warteAufAnmeldung(serverSocket);
@@ -24,6 +24,14 @@ import java.io.*;
         System.out.println(nachricht);
         schreibeNachricht(client, nachricht);
     }
+     static void test321(ServerSocket socket) throws IOException {
+         ServerSocket serverSocket = socket;
+         System.out.println("Server start");
+         Socket client = warteAufAnmeldung(serverSocket);
+         String nachricht = leseNachricht(client);
+         System.out.println(nachricht);
+         schreibeNachricht(client, nachricht);
+     }
 
     static Socket warteAufAnmeldung(ServerSocket serverSocket) throws IOException {
         Socket socket = serverSocket.accept(); // blockiert, bis sich ein Client angemeldet hat
