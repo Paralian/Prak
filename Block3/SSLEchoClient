@@ -8,8 +8,8 @@ import java.rmi.UnknownHostException;
 public class SSLEchoClient {
     public static Socket SSLHandshakeClient(/*final Socket socket,*/ final String host, final int port) throws IOException, UnknownHostException{
         //run echo server
-        System.setProperty("javax.net.ssl.trustStone","C:\\Users\\Marvin\\Desktop\\Uni\\Prak\\Block3\\block_03_students\\localhost-server.localhost-client.truststore");
-        System.setProperty("javax.net.ssl.trustStonePassword","isthisreallifeKappa123");
+        System.setProperty("javax.net.ssl.trustStore","C:\\Users\\Marvin\\Desktop\\Uni\\Prak\\Block3\\block_03_students\\localhost-server.localhost-client.truststore");
+        System.setProperty("javax.net.ssl.trustStorePassword","isthisreallifeKappa123");
         SSLSocketFactory factory =
                 (SSLSocketFactory) SSLSocketFactory.getDefault();
         SSLSocket socket = (SSLSocket) factory.createSocket(host, port);
