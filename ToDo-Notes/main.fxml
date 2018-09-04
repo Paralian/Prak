@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<SplitPane dividerPositions="0.4"
+           maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="todo.Controller">
+    <VBox>
+        <TextArea fx:id="newTodoText" VBox.vgrow="ALWAYS"/>
+        <Button fx:id="addButton" onAction="#addTodo" prefWidth="Infinity" text="Add"/>
+    </VBox>
+    <ScrollPane fx:id="ScrollList" fitToHeight="true" fitToWidth="true" vbarPolicy="ALWAYS">
+    <VBox>
+        <ListView fx:id="toDoListView" VBox.vgrow="ALWAYS" onMouseClicked="#text"/>
+        <ScrollPane prefHeight="50" VBox.vgrow="ALWAYS">
+            <Label fx:id="weitereText" wrapText="true" ></Label>
+        </ScrollPane>
+        <Button fx:id="RemoveButton" onAction="#delete" prefWidth="Infinity" text="Done"/>
+    </VBox>
+    </ScrollPane>
+</SplitPane>
