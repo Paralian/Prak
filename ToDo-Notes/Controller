@@ -1,0 +1,58 @@
+package todo;
+
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.util.Callback;
+
+import java.awt.*;
+import javafx.scene.control.Label;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable {
+
+    private ObservableList<TodoNote> todoNotes = FXCollections.observableArrayList();
+
+    public TextArea newTodoText;
+    public Button addButton;
+    public ListView<TodoNote> toDoListView;
+    public Label weitereText;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // use this instead of the constructor for initializing GUI parts
+        addButton.disableProperty().bind(Bindings.selectString(newTodoText.textProperty()).isEmpty());
+        toDoListView.setItems(todoNotes);
+
+        toDoListView.setCellFactory(irgeneinname -> new ListCell<TodoNote>() {
+                    @Override
+                    protected void updateItem(TodoNote item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item.getText().split("\\r?\\n")[0]);
+                        }
+                        else {setText("");}
+                        }
+                    });
+    }
+
+    public void addTodo() {
+        todoNotes.add(new TodoNote(newTodoText.getText()));
+        newTodoText.clear();
+    }
+    public void delete() {
+        weitereText.setText("");
+        todoNotes.removeAll(toDoListView.getSelectionModel().getSelectedItems());
+    }
+    public void text() {
+        weitereText.setText(toDoListView.getSelectionModel().getSelectedItem().toString());
+    }
+}
