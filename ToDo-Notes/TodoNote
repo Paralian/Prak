@@ -1,0 +1,45 @@
+package todo;
+
+import java.util.Date;
+
+/**
+ * A ToDo Note
+ */
+public class TodoNote {
+    private String text;
+
+    /**
+     * Create a new ToDo Note
+     * @param text the todo text
+     */
+    public TodoNote(String text) {
+        this.text = text;
+    }
+
+    /**
+     * @return the task
+     */
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public String toString() {
+        return text;
+    }
+
+    @Override
+    public int hashCode() {
+        return text.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof TodoNote) {
+            TodoNote other = (TodoNote) obj;
+            return text.equals(other.text);
+        } else {
+            return false;
+        }
+    }
+}
